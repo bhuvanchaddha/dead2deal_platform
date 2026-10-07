@@ -1,0 +1,40 @@
+{
+  "name": "dead2deal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "dev:all": "concurrently --names \"BACKEND,FRONTEND\" --prefix-colors \"cyan,magenta\" \"node server/src/server.js\" \"vite --host\"",
+    "dev:host": "concurrently --names \"BACKEND,FRONTEND\" --prefix-colors \"cyan,magenta\" \"node server/src/server.js\" \"vite --host\"",
+    "client": "vite",
+    "server": "node server/src/server.js",
+    "server:dev": "node --watch server/src/server.js",
+    "test:backend": "node scratch/test_phase18_backend.mjs",
+    "test:integration": "node scratch/test_phase19_integration.mjs",
+    "test:marketplace": "node scratch/test_phase20_marketplace.mjs",
+    "test:phase21": "node scratch/test_phase21_postgres.mjs",
+    "test:phase22": "node scratch/test_phase22_postgres.mjs",
+    "test:phase23": "node scratch/test_phase23_admin.mjs",
+    "test:admin": "node scratch/test_phase23_admin.mjs",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.1",
+    "concurrently": "^10.0.5",
+    "vite": "^8.3.0"
+  },
+  "dependencies": {
+    "axios": "^1.20.0",
+    "lucide-react": "^1.45.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.3",
+    "recharts": "^3.10.1"
+  }
+}

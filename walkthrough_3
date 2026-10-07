@@ -1,0 +1,202 @@
+# Dead2Deal — Phase 1 + Phase 2 Walkthrough
+
+## ✅ PHASE 1 — Landing Page (Complete)
+**Build Status**: `✓ 0 errors` | **Dev Server**: `http://localhost:5173`
+
+---
+
+## ✅ PHASE 2 — Buyer Marketplace (Complete)
+**Build Status**: `✓ 0 errors, 0 console warnings` | **Route**: `/marketplace`
+
+### Verification Results (9/9 PASS)
+
+| Step | Test | Result |
+|------|------|--------|
+| 1 | Page loads at /marketplace | ✅ PASS |
+| 2 | Visual layout check (navbar, filters, grid, cards) | ✅ PASS |
+| 3 | Search "CNC" — results filtered | ✅ PASS |
+| 4 | Category filter "Industrial Machinery" | ✅ PASS |
+| 5 | Condition filter "New / Unused" | ✅ PASS |
+| 6 | Sort "Price: Low to High" | ✅ PASS |
+| 7 | Clear All filters | ✅ PASS |
+| 8 | Product card navigation → `/marketplace/:id` | ✅ PASS |
+| 9 | Browser console errors | ✅ 0 errors |
+
+### Screenshots
+
+![Full Marketplace — 16 listings, 4-column grid, filter sidebar, sort dropdown](C:\Users\LAKSHAY ANAND\.gemini\antigravity-ide\brain\c5833da4-ba97-458f-83f7-f69070a98c44\step1_marketplace_full_1789205339591.png)
+
+---
+
+## ✅ PHASE 3 — Product Detail Page (Complete)
+**Build Status**: `✓ 0 errors, 0 console warnings` | **Route**: `/marketplace/:id`
+
+### Verification Results (12/12 PASS)
+
+| Step | Test | Result |
+|------|------|--------|
+| 1 | Page loads at /marketplace/prod_001 | ✅ PASS |
+| 2 | 3-column layout (gallery / info / right panel) | ✅ PASS |
+| 3 | Image gallery thumbnail + arrow navigation | ✅ PASS |
+| 4 | RFQ Modal — form, validation, reference `D2D-RFQ-13449938` | ✅ PASS |
+| 5 | Offer Modal — 12% discount, total ₹22,00,000, ref `D2D-OFR-13548351` | ✅ PASS |
+| 6 | Save button toggles to "Saved" with dark active state | ✅ PASS |
+| 7 | Tabs — Specifications table, Trust & Transparency 4 cards | ✅ PASS |
+| 8 | Dynamic routes — prod_005 (CNC Machine), prod_012 (Cardboard Boxes) | ✅ PASS |
+| 9 | Not-Found — prod_999 shows "Listing Not Found" + back button | ✅ PASS |
+| 10 | Related products — click navigates to new detail page | ✅ PASS |
+| 11 | Console errors | ✅ 0 errors |
+| 12 | Mobile — stacked layout + sticky CTA bar | ✅ PASS |
+
+### Phase 3 Screenshots
+
+![Product Detail Page — full 3-column layout, prod_001](C:\Users\LAKSHAY ANAND\.gemini\antigravity-ide\brain\c5833da4-ba97-458f-83f7-f69070a98c44\step1_prod_001_1789213355366.png)
+
+![RFQ Modal Success — reference D2D-RFQ-13449938](C:\Users\LAKSHAY ANAND\.gemini\antigravity-ide\brain\c5833da4-ba97-458f-83f7-f69070a98c44\step4_rfq_success_1789213466395.png)
+
+![Offer Modal Success — D2D-OFR-13548351, ₹1,10,000/unit for 20 units](C:\Users\LAKSHAY ANAND\.gemini\antigravity-ide\brain\c5833da4-ba97-458f-83f7-f69070a98c44\step5_offer_success_1789213563990.png)
+
+---
+
+## What Was Built
+
+### Project Scaffolded From Scratch
+
+The `Dead2Deal/` folder went from a blank slate (only `overall_img.png`) to a complete Vite + React application.
+
+**Dependencies installed**:
+- `react`, `react-dom`, `react-router-dom`
+- `recharts` (charts — Phase 4)
+- `lucide-react` (icons)
+- `axios` (API layer — future phases)
+- `vite`, `@vitejs/plugin-react` (build tooling)
+
+---
+
+### Design System
+
+| File | Purpose |
+|------|---------|
+| [`tokens.css`](file:///c:/Users/LAKSHAY%20ANAND/OneDrive/Desktop/Dead2Deal/src/design-system/tokens.css) | 80+ CSS custom properties — navy/emerald palette, typography, spacing, shadows, condition/status colors |
+| [`animations.css`](file:///c:/Users/LAKSHAY%20ANAND/OneDrive/Desktop/Dead2Deal/src/design-system/animations.css) | 9 keyframe animations + utility classes + delay utilities |
+| [`index.css`](file:///c:/Users/LAKSHAY%20ANAND/OneDrive/Desktop/Dead2Deal/src/index.css) | Global resets, typography base, scrollbar styling, utility classes |
+
+---
+
+### Components Built
+
+| Component | File |
+|-----------|------|
+| `PublicNavbar` | [`PublicNavbar.jsx`](file:///c:/Users/LAKSHAY%20ANAND/OneDrive/Desktop/Dead2Deal/src/components/layout/PublicNavbar.jsx) |
+| `Footer` | [`Footer.jsx`](file:///c:/Users/LAKSHAY%20ANAND/OneDrive/Desktop/Dead2Deal/src/components/layout/Footer.jsx) |
+
+**PublicNavbar** has two variants:
+- `default` — logo + nav links + Login/Sign Up (Landing Page)
+- `marketplace` — logo + center search bar + dropdown menus (Marketplace)
+
+---
+
+### Data Layer
+
+| File | Content |
+|------|---------|
+| [`categories.js`](file:///c:/Users/LAKSHAY%20ANAND/OneDrive/Desktop/Dead2Deal/src/data/categories.js) | 10 B2B categories with slugs, icons, listing counts |
+| [`products.js`](file:///c:/Users/LAKSHAY%20ANAND/OneDrive/Desktop/Dead2Deal/src/data/products.js) | 8 realistic Indian B2B product listings — seller-declared conditions only (New/Unused, Open Box, Used, Refurbished) |
+| [`sellers.js`](file:///c:/Users/LAKSHAY%20ANAND/OneDrive/Desktop/Dead2Deal/src/data/sellers.js) | 8 verified seller profiles with Indian company data |
+| [`dashboard.js`](file:///c:/Users/LAKSHAY%20ANAND/OneDrive/Desktop/Dead2Deal/src/data/dashboard.js) | KPI data, trend chart arrays, condition distribution, recent listings |
+| [`insights.js`](file:///c:/Users/LAKSHAY%20ANAND/OneDrive/Desktop/Dead2Deal/src/data/insights.js) | 5 AI Recovery Insights, platform statistics |
+
+---
+
+### Landing Page (Screen 1)
+
+**File**: [`LandingPage.jsx`](file:///c:/Users/LAKSHAY%20ANAND/OneDrive/Desktop/Dead2Deal/src/pages/LandingPage/LandingPage.jsx)
+
+Sections implemented (matching `overall_img` Screen 1):
+
+| Section | Status |
+|---------|--------|
+| Dark navy hero with warehouse BG | ✅ |
+| "Turn Dead Stock into Live Deals." headline with emerald accent | ✅ |
+| "SURPLUS TODAY. OPPORTUNITY TOMORROW." eyebrow | ✅ |
+| Browse Inventory + Sell Your Inventory CTAs | ✅ |
+| Trust bar (Verified Businesses, Secure Transactions, AI Insights, Supply Chain) | ✅ |
+| Floating stats card (₹850Cr+, 2,500+, 45,000+, 78%) | ✅ |
+| "GOOD BUSINESSES DON'T LET STOCK GO TO WASTE." quote | ✅ |
+| Floating animation on stats card | ✅ |
+| 10-category icon grid | ✅ |
+| Featured listings (4 cards with verified badge, condition badge, price, View Details + Send RFQ) | ✅ |
+| How Dead2Deal Works (4-step process) | ✅ |
+| Value proposition strip (dark navy) | ✅ |
+| Bottom stats bar (5 metrics) | ✅ |
+| CTA section (dark navy card with decorative circles) | ✅ |
+| Full footer | ✅ |
+
+---
+
+### Routing
+
+| Route | Status |
+|-------|--------|
+| `/` | ✅ LandingPage (fully built) |
+| `/marketplace` | 🔄 Stub (Phase 2) |
+| `/marketplace/:id` | 🔄 Stub (Phase 3) |
+| `/dashboard/*` | 🔄 Stub (Phase 4) |
+| `/login`, `/signup` | 🔄 Stub (Phase 6) |
+
+---
+
+## Screenshots
+
+### Hero + Floating Stats Card
+![Landing Page Full](file:///C:/Users/LAKSHAY%20ANAND/.gemini/antigravity-ide/brain/c5833da4-ba97-458f-83f7-f69070a98c44/landing_page_full_1789204415709.png)
+
+### Category Grid + Featured Listings
+![Landing Page Scrolled](file:///C:/Users/LAKSHAY%20ANAND/.gemini/antigravity-ide/brain/c5833da4-ba97-458f-83f7-f69070a98c44/landing_page_scrolled_1789204424807.png)
+
+---
+
+## Folder Structure (Current State)
+
+```
+Dead2Deal/
+├── src/
+│   ├── design-system/
+│   │   ├── tokens.css        ✅
+│   │   └── animations.css    ✅
+│   ├── components/layout/
+│   │   ├── PublicNavbar.jsx  ✅
+│   │   └── Footer.jsx        ✅
+│   ├── pages/
+│   │   ├── LandingPage/      ✅ (fully built)
+│   │   ├── Marketplace/      🔄 stub
+│   │   ├── ProductDetail/    🔄 stub
+│   │   └── SellerDashboard/  🔄 stub
+│   ├── data/
+│   │   ├── categories.js     ✅
+│   │   ├── products.js       ✅
+│   │   ├── sellers.js        ✅
+│   │   ├── dashboard.js      ✅
+│   │   └── insights.js       ✅
+│   ├── App.jsx               ✅
+│   ├── main.jsx              ✅
+│   └── index.css             ✅
+├── index.html                ✅
+├── vite.config.js            ✅
+└── package.json              ✅
+```
+
+---
+
+## PHASE 2 — Next Steps
+
+**Buyer Marketplace** (`/marketplace`) — Awaiting your approval to begin:
+
+1. `FilterPanel` component (category checkboxes, location, price range, quantity range, condition, seller type, Apply Filters button)
+2. `ProductCard` component (full marketplace card)
+3. `ConditionBadge` component (seller-declared, with label)
+4. `SearchBar` enhancement for marketplace
+5. `FilterContext` for client-side filtering
+6. `MarketplacePage` — left sidebar + 4-column product grid + sort + results count
+7. Wire filters to `filterProducts()` function from `products.js`
+
